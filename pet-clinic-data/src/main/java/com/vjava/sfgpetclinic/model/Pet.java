@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table("pets")
+@Table(name = "pets")
 public class Pet extends BaseEntity{
 
     @ManyToOne
@@ -17,10 +17,10 @@ public class Pet extends BaseEntity{
     @JoinColumn(name="owner_id")
     private Owner owner;
 
-    @Column("birth_date")
+    @Column(name = "birth_date")
     private LocalDate birthDate;
 
-    @Column("name")
+    @Column(name = "name")
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pet")
