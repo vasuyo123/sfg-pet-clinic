@@ -1,10 +1,7 @@
 package com.vjava.sfgpetclinic.bootstrap;
 
 import com.vjava.sfgpetclinic.model.*;
-import com.vjava.sfgpetclinic.services.OwnerService;
-import com.vjava.sfgpetclinic.services.PetTypeService;
-import com.vjava.sfgpetclinic.services.SpecialityService;
-import com.vjava.sfgpetclinic.services.VetService;
+import com.vjava.sfgpetclinic.services.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -16,12 +13,15 @@ public class DataLoader implements CommandLineRunner {
    private final VetService vetService;
    private final PetTypeService petTypeService;
    private final SpecialityService specialityService;
+   private final VisitService visitService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialityService specialityService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService,
+                      SpecialityService specialityService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialityService = specialityService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -105,7 +105,7 @@ public class DataLoader implements CommandLineRunner {
 
         ownerService.save(owner3);
 
-        System.out.println("Loading Owners..");
+        System.out.println("Loaded Owners..");
 
         Vet vet1 = new Vet();
         vet1.setFirstName("Sam");
@@ -123,5 +123,13 @@ public class DataLoader implements CommandLineRunner {
         vetService.save(vet2);
 
         System.out.println("Loaded Vets..");
+
+        Visit fionasCatVisit = new Visit();
+        fionasCatVisit.setPet(fionasPet);
+        fionasCatVisit.setDate(LocalDate.now());
+        fionasCatVisit.setDescription("Sneezy Kitty");
+        visitService.save(fionasCatVisit);
+
+        System.out.println("Loaded Visits");
     }
 }
