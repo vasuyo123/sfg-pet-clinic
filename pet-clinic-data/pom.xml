@@ -40,6 +40,16 @@
                 </exclusion>
             </exclusions>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.junit.jupiter</groupId>-->
+<!--            <artifactId>junit-jupiter-api</artifactId>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.junit.jupiter</groupId>-->
+<!--            <artifactId>junit-jupiter-engine</artifactId>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
     </dependencies>
 <properties>
     <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
@@ -51,6 +61,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
 
             </plugin>
+
         </plugins>
     </build>
 
