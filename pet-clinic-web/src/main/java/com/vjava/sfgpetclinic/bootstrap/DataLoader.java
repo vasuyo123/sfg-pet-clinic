@@ -9,25 +9,27 @@ import java.time.LocalDate;
 
 @Component
 public class DataLoader implements CommandLineRunner {
-   private final OwnerService ownerService;
-   private final VetService vetService;
-   private final PetTypeService petTypeService;
-   private final SpecialityService specialityService;
-   private final VisitService visitService;
+    private final OwnerService ownerService;
+    private final VetService vetService;
+    private final PetTypeService petTypeService;
+    private final SpecialityService specialityService;
+    private final VisitService visitService;
+    private final PetService petService;
 
     public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService,
-                      SpecialityService specialityService, VisitService visitService) {
+                      SpecialityService specialityService, VisitService visitService, PetService petService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialityService = specialityService;
         this.visitService = visitService;
+        this.petService = petService;
     }
 
     @Override
     public void run(String... args) throws Exception {
         int count = petTypeService.findAll().size();
-        if(count == 0) {
+        if (count == 0) {
             loadData();
         }
 
@@ -65,12 +67,14 @@ public class DataLoader implements CommandLineRunner {
         owner1.setCity("His City");
         owner1.setTelephone("234-678-5433");
 
+
         Pet mikesPet = new Pet();
         mikesPet.setPetType(savedDogPetType);
         mikesPet.setOwner(owner1);
         mikesPet.setName("Mikes Dog");
-        mikesPet.setBirthDate( LocalDate.now());
+        mikesPet.setBirthDate(LocalDate.now());
         owner1.getPets().add(mikesPet);
+        petService.save(mikesPet);
         ownerService.save(owner1);
 
         Owner owner2 = new Owner();
@@ -84,9 +88,9 @@ public class DataLoader implements CommandLineRunner {
         fionasPet.setPetType(savedCatPetType);
         fionasPet.setOwner(owner2);
         fionasPet.setName("Fionas Cat");
-        fionasPet.setBirthDate( LocalDate.now());
+        fionasPet.setBirthDate(LocalDate.now());
         owner2.getPets().add(fionasPet);
-
+        petService.save(fionasPet);
         ownerService.save(owner2);
 
         Owner owner3 = new Owner();
@@ -98,11 +102,11 @@ public class DataLoader implements CommandLineRunner {
 
         Pet vasusTiger = new Pet();
         vasusTiger.setPetType(savedTigerPetType);
-        vasusTiger.setOwner(owner2);
-        vasusTiger.setName("Fionas Cat");
-        vasusTiger.setBirthDate( LocalDate.now());
+        vasusTiger.setOwner(owner3);
+        vasusTiger.setName("Vasus Tiger");
+        vasusTiger.setBirthDate(LocalDate.now());
         owner3.getPets().add(vasusTiger);
-
+        petService.save(vasusTiger);
         ownerService.save(owner3);
 
         System.out.println("Loaded Owners..");
