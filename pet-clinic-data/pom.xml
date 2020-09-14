@@ -50,6 +50,13 @@
 <!--            <artifactId>junit-jupiter-engine</artifactId>-->
 <!--            <scope>test</scope>-->
 <!--        </dependency>-->
+        <!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 <properties>
     <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
