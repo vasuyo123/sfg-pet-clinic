@@ -39,17 +39,14 @@ public class DataLoader implements CommandLineRunner {
         PetType dog = new PetType();
         dog.setName("Dog");
         PetType savedDogPetType = petTypeService.save(dog);
-        System.out.println("dog Type Id: "+savedDogPetType.getId()+" :dog Type Name: "+savedDogPetType.getName());
 
         PetType cat = new PetType();
         cat.setName("Cat");
         PetType savedCatPetType = petTypeService.save(cat);
-        System.out.println("cat Type Id: "+savedCatPetType.getId()+" :cat Type Name: "+savedCatPetType.getName());
 
         PetType tiger = new PetType();
         tiger.setName("Tiger");
         PetType savedTigerPetType = petTypeService.save(tiger);
-        System.out.println("Tiger Type Id: "+savedTigerPetType.getId()+" :Tiger Type Name: "+savedTigerPetType.getName());
 
         Speciality radiology = new Speciality();
         radiology.setDescription("Radiology");
@@ -114,9 +111,6 @@ public class DataLoader implements CommandLineRunner {
         ownerService.save(owner3);
         petService.save(vasusTiger);
 
-
-        System.out.println("Loaded Owners..");
-
         Vet vet1 = new Vet();
         vet1.setFirstName("Sam");
         vet1.setLastName("Axe");
@@ -132,14 +126,11 @@ public class DataLoader implements CommandLineRunner {
 
         vetService.save(vet2);
 
-        System.out.println("Loaded Vets..");
-
         Visit fionasCatVisit = new Visit();
         fionasCatVisit.setPet(fionasPet);
         fionasCatVisit.setDate(LocalDate.now());
         fionasCatVisit.setDescription("Sneezy Kitty");
         visitService.save(fionasCatVisit);
 
-        System.out.println("Loaded Visits");
     }
 }
